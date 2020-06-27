@@ -2,29 +2,26 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"os/exec"
 	"time"
 )
 
 func main() {
-	// construct `sleep.sh` command
-	cmd := &exec.Cmd{
-		Path:   "/home/divierda/go/src/go-plasma-no-shadow/no-shadow.sh",
-		Args:   []string{"/home/divierda/go/src/go-plasma-no-shadow/no-shadow.sh"},
-		Stdout: os.Stdout,
-		Stderr: os.Stdout,
-	}
+	// bash script path (root path)
+	path := "./no-shadow.sh"
 
-	fiveMin := time.NewTicker(1 * time.Minute)
+	// command to execute bash script
+	cmd := exec.Command("/bin/bash", path)
 
+	fiveMin := time.NewTicker(2 * time.Minute)
+
+	// execute script for every 2 minutes
 	for {
 		select {
 		case <-fiveMin.C:
-			// run `cmd` in background
-			fmt.Println("Executed")
+			fmt.Println("2 minute passed: Script Executed")
+			// start execute the bash script
 			cmd.Run()
-
 		}
 	}
 }
