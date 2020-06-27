@@ -1,0 +1,19 @@
+[Unit]
+
+Description=Disable shadow under the panel of kde plasma 5
+
+[Service]
+
+Type=simple
+
+Restart=always
+
+RestartSec=5s
+
+ExecStart="/home/divierda/go/src/go-plasma-no-shadow/main"
+
+
+
+[Install]
+
+WantedBy=multi-user.target
