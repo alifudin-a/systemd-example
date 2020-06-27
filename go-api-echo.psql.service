@@ -1,0 +1,11 @@
+[Unit]
+Description=goapi
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5s
+ExecStart="/home/divierda/Golang Practice/go-api-echo-psql/go-api-echo-psql"
+
+[Install]
+WantedBy=multi-user.target
